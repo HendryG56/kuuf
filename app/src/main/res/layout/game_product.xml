@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    android:outlineSpotShadowColor="@color/colorPrimaryDark"
+    app:cardBackgroundColor="@color/colorPrimary"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/gameproductname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exploding Kitten"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="25sp"
+            android:paddingLeft="15dp"
+            android:fontFamily="sans-serif-black"
+            />
+
+        <TextView
+            android:id="@+id/minplayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Min Player: 2"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="25sp"
+            android:paddingLeft="15dp"
+            android:fontFamily="sans-serif-black"
+            />
+
+        <TextView
+            android:id="@+id/maxplayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max Player: 5"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="25sp"
+            android:paddingLeft="15dp"
+            android:fontFamily="sans-serif-black"
+            />
+
+        <TextView
+            android:id="@+id/gameproductprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp. 100.000,00"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="25sp"
+            android:paddingLeft="15dp"
+            android:fontFamily="sans-serif-black"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

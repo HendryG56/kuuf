@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfilePage"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/headerprofile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintVertical_bias=".02"
+        android:textSize="35sp"
+        android:text="Profile"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-black"
+        />
+
+    <ImageView
+        android:id="@+id/Logoprofile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logokuuf_png"
+        app:layout_constraintLeft_toRightOf="@+id/headerprofile"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="150dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/Usernameprofile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/Logoprofile"
+        android:textSize="20dp"
+        android:padding="12dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:drawableStart="@drawable/ic_account"
+        android:drawablePadding="10dp"
+        android:background="@drawable/edittext_edit"
+        />
+
+    <TextView
+        android:id="@+id/Genderprofile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/Usernameprofile"
+        android:textSize="20dp"
+        android:padding="12dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:drawableStart="@drawable/ic_gender"
+        android:drawablePadding="10dp"
+        android:background="@drawable/edittext_edit"
+        />
+
+    <TextView
+        android:id="@+id/PhoneNumberprofile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/Genderprofile"
+        android:textSize="20dp"
+        android:padding="12dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:drawableStart="@drawable/ic_phone"
+        android:drawablePadding="10dp"
+        android:background="@drawable/edittext_edit"
+        />
+
+    <TextView
+        android:id="@+id/Walletprofile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/PhoneNumberprofile"
+        android:textSize="20dp"
+        android:padding="12dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:drawableStart="@drawable/ic_wallet"
+        android:drawablePadding="10dp"
+        android:background="@drawable/edittext_edit"
+        />
+
+    <TextView
+        android:id="@+id/DateofBirthprofile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/Walletprofile"
+        android:textSize="20dp"
+        android:padding="12dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:drawableStart="@drawable/ic_date"
+        android:drawablePadding="10dp"
+        android:background="@drawable/edittext_edit"
+        />
+
+    <TextView
+        android:id="@+id/TopUpNominal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/DateofBirthprofile"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Top Up Nominal: "
+        android:textSize="23sp"
+        android:textColor="@color/colorAccent"
+        />
+
+    <RadioGroup
+        android:id="@+id/topupradiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TopUpNominal"
+        >
+
+        <RadioButton
+            android:id="@+id/button250"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp.250.000"
+            android:textSize="23sp"
+            android:onClick="topupbutton"
+            />
+
+        <RadioButton
+            android:id="@+id/button500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp.500.000"
+            android:textSize="23sp"
+            android:onClick="topupbutton"
+            />
+
+        <RadioButton
+            android:id="@+id/button1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp.1.000.000"
+            android:textSize="23sp"
+            android:onClick="topupbutton"
+            />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/PasswordProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/topupradiogroup"
+        android:hint="Password"
+        android:padding="16dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="10dp"
+        android:background="@drawable/edittext_edit"
+        />
+
+    <Button
+        android:id="@+id/ConfirmTopUp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Confirm"
+        app:layout_constraintTop_toBottomOf="@+id/PasswordProfile"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/button_edit"
+        android:fontFamily="sans-serif-black"
+        android:onClick="ConfirmTopUp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

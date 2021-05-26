@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/headerstore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text="Store"
+            android:paddingTop="15dp"
+            android:paddingLeft="30dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="sans-serif-black"
+            />
+
+        <ImageView
+            android:id="@+id/Logohome"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logokuuf_png"
+            android:layout_marginLeft="220dp"
+            />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/store_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logohome"
+        />
+</LinearLayout>

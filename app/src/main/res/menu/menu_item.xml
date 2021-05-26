@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/HomeButton"
+        android:icon="@drawable/ic_more"
+        android:title="Home"
+        />
+    <item
+        android:id="@+id/StoreButton"
+        android:icon="@drawable/ic_more"
+        android:title="Store"
+        />
+    <item
+        android:id="@+id/ProfileButton"
+        android:icon="@drawable/ic_more"
+        android:title="Profile"
+        />
+    <item
+        android:id="@+id/LogOutButton"
+        android:icon="@drawable/ic_more"
+        android:title="LogOut"
+        />
+
+</menu>

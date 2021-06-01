@@ -22,10 +22,12 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
 
     public GameAdapter(Context cntx) {
         this.cntx = cntx;
+        notifyDataSetChanged();
     }
 
     public void setGames(ArrayList<Game> games) {
         this.games = games;
+        notifyDataSetChanged();
     }
 
     public void setUserid(Integer userid) {

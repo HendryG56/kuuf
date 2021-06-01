@@ -52,6 +52,8 @@ public class ProductDetailPage extends AppCompatActivity {
         productid = detail.getIntExtra("idproduct", 0);
         userid = detail.getIntExtra("iduser", 0);
 
+        Toast.makeText(this, "" + productid, Toast.LENGTH_SHORT).show();
+
         game = gameDB.getGame(productid);
         account = accountDB.getAccount(userid);
 

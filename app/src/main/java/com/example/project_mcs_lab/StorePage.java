@@ -40,7 +40,6 @@ public class StorePage extends AppCompatActivity {
             game1.setLongitude(106.265139);
             game1.setLatitude(-6.912035);
             gameDB.insertgame(game1);
-            games.add(game1);
 
             Game game2 = new Game();
             game2.setGamename("Card Against Humanity");
@@ -50,7 +49,6 @@ public class StorePage extends AppCompatActivity {
             game2.setLongitude(108.126810);
             game2.setLatitude(-7.586037);
             gameDB.insertgame(game2);
-            games.add(game2);
 
             Game game3 = new Game();
             game3.setGamename("Bang Dice Game");
@@ -60,7 +58,6 @@ public class StorePage extends AppCompatActivity {
             game3.setLongitude(103.806584);
             game3.setLatitude(-5.345676);
             gameDB.insertgame(game3);
-            games.add(game3);
 
             Game game4 = new Game();
             game4.setGamename("Arkham Horror");
@@ -70,7 +67,6 @@ public class StorePage extends AppCompatActivity {
             game4.setLongitude(101.789556);
             game4.setLatitude(3.743289);
             gameDB.insertgame(game4);
-            games.add(game4);
 
             Game game5 = new Game();
             game5.setGamename("The Dark Moon");
@@ -80,7 +76,6 @@ public class StorePage extends AppCompatActivity {
             game5.setLongitude(108.890254);
             game5.setLatitude(-6.782312);
             gameDB.insertgame(game5);
-            games.add(game5);
 
             Game game6 = new Game();
             game6.setGamename("Pandemic");
@@ -90,7 +85,6 @@ public class StorePage extends AppCompatActivity {
             game6.setLongitude(104.804334);
             game6.setLatitude(1.816432);
             gameDB.insertgame(game6);
-            games.add(game6);
 
             Game game7 = new Game();
             game7.setGamename("The Werewolf Ultimate");
@@ -100,7 +94,6 @@ public class StorePage extends AppCompatActivity {
             game7.setLongitude(106.632134);
             game7.setLatitude(-6.890323);
             gameDB.insertgame(game7);
-            games.add(game7);
             check = 1;
         }
         else{
@@ -108,6 +101,12 @@ public class StorePage extends AppCompatActivity {
                 Game game = gameDB.getGame(i);
                 games.add(game);
             }
+        }
+
+        count = gameDB.countTableSize();
+        for(int i = 1; i <= count; i++){
+            Game game = gameDB.getGame(i);
+            games.add(game);
         }
 
         gamesview = findViewById(R.id.store_view);

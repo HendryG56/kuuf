@@ -37,8 +37,8 @@ public class GameDB {
         Cursor cursor = db.query(DBHelper.TABLE_PRODUCTS, null, selection, selectionArgs, null, null, null);
 
         Game game = null;
-
-        if(cursor.moveToFirst()){
+        cursor.moveToFirst();
+//        if(cursor.moveToFirst()){
             game = new Game();
             game.setProduct_id(cursor.getInt(cursor.getColumnIndex(DBHelper.FIELD_PRODUCT_ID)));
             game.setGamename(cursor.getString(cursor.getColumnIndex(DBHelper.FIELD_PRODUCT_NAME)));
@@ -47,7 +47,7 @@ public class GameDB {
             game.setGameprice(cursor.getInt(cursor.getColumnIndex(DBHelper.FIELD_PRODUCT_PRICE)));
             game.setLatitude(cursor.getDouble(cursor.getColumnIndex(DBHelper.FIELD_PRODUCT_LATITUDE)));
             game.setLongitude(cursor.getDouble(cursor.getColumnIndex(DBHelper.FIELD_PRODUCT_LONGITUDE)));
-        }
+//        }
 
         cursor.close();
         db.close();

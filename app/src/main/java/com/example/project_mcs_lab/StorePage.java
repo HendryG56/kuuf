@@ -7,7 +7,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -32,75 +45,61 @@ public class StorePage extends AppCompatActivity {
 
         count = gameDB.countTableSize();
         if(count == 0) {
-            Game game1 = new Game();
+            /*Game game1 = new Game();
             game1.setGamename("Exploding Kitten");
             game1.setMinplayer(2);
             game1.setMaxplayer(5);
             game1.setGameprice(250000);
             game1.setLongitude(106.265139);
             game1.setLatitude(-6.912035);
-            gameDB.insertgame(game1);
+            gameDB.insertgame(game1);*/
 
-            Game game2 = new Game();
-            game2.setGamename("Card Against Humanity");
-            game2.setMinplayer(2);
-            game2.setMaxplayer(4);
-            game2.setGameprice(182500);
-            game2.setLongitude(108.126810);
-            game2.setLatitude(-7.586037);
-            gameDB.insertgame(game2);
+            /*{
+                "name": "Card Against Humanity",
+                "min_player": 2,
+                "max_player": 4,
+                "price": 182500,
+                "created_at": "9/8/2014",
+                "latitude": "-7.586037",
+                "longitude": "108.126810"
+            }*/
 
-            Game game3 = new Game();
-            game3.setGamename("Bang Dice Game");
-            game3.setMinplayer(3);
-            game3.setMaxplayer(8);
-            game3.setGameprice(355000);
-            game3.setLongitude(103.806584);
-            game3.setLatitude(-5.345676);
-            gameDB.insertgame(game3);
+            RequestQueue requestQueue = Volley.newRequestQueue(StorePage.this);
+            String url = "https://api.jsonbin.io/b/5eb51c6947a2266b1474d701/7";
 
-            Game game4 = new Game();
-            game4.setGamename("Arkham Horror");
-            game4.setMinplayer(3);
-            game4.setMaxplayer(8);
-            game4.setGameprice(250000);
-            game4.setLongitude(101.789556);
-            game4.setLatitude(3.743289);
-            gameDB.insertgame(game4);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONArray items = response.getJSONArray("items");
+                        int len = items.length();
 
-            Game game5 = new Game();
-            game5.setGamename("The Dark Moon");
-            game5.setMinplayer(2);
-            game5.setMaxplayer(7);
-            game5.setGameprice(560000);
-            game5.setLongitude(108.890254);
-            game5.setLatitude(-6.782312);
-            gameDB.insertgame(game5);
+                        for(int i = 0; i < len; i++){
+                            JSONObject item = items.getJSONObject(i);
 
-            Game game6 = new Game();
-            game6.setGamename("Pandemic");
-            game6.setMinplayer(2);
-            game6.setMaxplayer(5);
-            game6.setGameprice(1250000);
-            game6.setLongitude(104.804334);
-            game6.setLatitude(1.816432);
-            gameDB.insertgame(game6);
+                            Game game = new Game();
+                            game.setGamename(item.getString("name"));
+                            game.setMinplayer(item.getInt("min_player"));
+                            game.setMaxplayer(item.getInt("max_player"));
+                            game.setGameprice(item.getInt("price"));
+                            game.setLatitude(item.getDouble("latitude"));
+                            game.setLongitude(item.getDouble("longitude"));
 
-            Game game7 = new Game();
-            game7.setGamename("The Werewolf Ultimate");
-            game7.setMinplayer(5);
-            game7.setMaxplayer(12);
-            game7.setGameprice(325000);
-            game7.setLongitude(106.632134);
-            game7.setLatitude(-6.890323);
-            gameDB.insertgame(game7);
+                            gameDB.insertgame(game);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("apiData", "Error calling api");
+                }
+            });
+
+            requestQueue.add(jsonObjectRequest);
             check = 1;
-        }
-        else{
-            for(int i = 1; i <= count; i++){
-                Game game = gameDB.getGame(i);
-                games.add(game);
-            }
         }
 
         count = gameDB.countTableSize();

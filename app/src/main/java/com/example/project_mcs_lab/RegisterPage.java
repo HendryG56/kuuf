@@ -162,6 +162,9 @@ public class RegisterPage extends AppCompatActivity {
             accountDB.insertAccount(account);
 
             Toast.makeText(this,"Register Successfull!", Toast.LENGTH_SHORT).show();
+
+            //Kembali ke Login Screen
+            finish();
         }
     }
 

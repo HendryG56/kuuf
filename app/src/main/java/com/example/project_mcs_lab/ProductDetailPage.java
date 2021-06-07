@@ -1,10 +1,15 @@
 package com.example.project_mcs_lab;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,6 +39,9 @@ public class ProductDetailPage extends AppCompatActivity {
     Account account = new Account();
     Game game = new Game();
 
+    SmsManager smsManager;
+    int smsPermission;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +55,13 @@ public class ProductDetailPage extends AppCompatActivity {
         gameDB = new GameDB(this);
         accountDB = new AccountDB(this);
         transactionDB = new TransactionDB(this);
+
+        smsManager = SmsManager.getDefault();
+        smsPermission = ContextCompat.checkSelfPermission(ProductDetailPage.this, Manifest.permission.SEND_SMS);
+
+        if(smsPermission != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(ProductDetailPage.this, new String[]{Manifest.permission.SEND_SMS}, 1);
+        }
 
         Intent detail = getIntent();
         productid = detail.getIntExtra("idproduct", 0);
@@ -72,6 +87,7 @@ public class ProductDetailPage extends AppCompatActivity {
             cek++;
             accountDB.minusNominal(account, userid, game.getGameprice());
         }
+        cek=1;
         if(cek == 1){
             String transactiondate = new SimpleDateFormat("dd/MMM/yyyy", Locale.getDefault()).format(new Date());
             Transaction transaction = new Transaction();
@@ -79,6 +95,21 @@ public class ProductDetailPage extends AppCompatActivity {
             transaction.setProduct_id(productid);
             transaction.setTr_date(transactiondate);
             transactionDB.insertTransaction(transaction);
+
+            Account account = accountDB.getAccount(userid);
+            Game game = gameDB.getGame(productid);
+
+
+            smsManager = SmsManager.getDefault();
+            smsPermission = ContextCompat.checkSelfPermission(ProductDetailPage.this, Manifest.permission.SEND_SMS);
+
+            if(smsPermission != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(ProductDetailPage.this, new String[]{Manifest.permission.SEND_SMS}, 1);
+            }
+            //SEND SMS
+            String message = "Pembelian " + game.getGamename() + " seharga " + game.getGameprice() + " Berhasil!";
+            smsManager.sendTextMessage(account.getPhonenumber(), null, message, null, null);
+
             finish();
         }
     }

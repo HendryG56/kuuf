@@ -43,6 +43,18 @@ public class StorePage extends AppCompatActivity {
 
         gameDB = new GameDB(this);
 
+        gamesview = findViewById(R.id.store_view);
+
+        Intent intent = getIntent();
+        userid = intent.getIntExtra("USER_ID_STORE", 0);
+
+        final GameAdapter gameadp =new GameAdapter(this);
+        gameadp.setGames(games);
+        gameadp.setUserid(userid);
+
+        gamesview.setAdapter(gameadp);
+        gamesview.setLayoutManager(new LinearLayoutManager(this));
+
         count = gameDB.countTableSize();
         if(count == 0) {
             /*Game game1 = new Game();
@@ -86,6 +98,8 @@ public class StorePage extends AppCompatActivity {
                             game.setLongitude(item.getDouble("longitude"));
 
                             gameDB.insertgame(game);
+                            games.add(game);
+                            gameadp.notifyDataSetChanged();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -99,25 +113,14 @@ public class StorePage extends AppCompatActivity {
             });
 
             requestQueue.add(jsonObjectRequest);
+
             check = 1;
+        } else{
+            for(int i = 1; i <= count; i++){
+                Game game = gameDB.getGame(i);
+                games.add(game);
+                gameadp.notifyDataSetChanged();
+            }
         }
-
-        count = gameDB.countTableSize();
-        for(int i = 1; i <= count; i++){
-            Game game = gameDB.getGame(i);
-            games.add(game);
-        }
-
-        gamesview = findViewById(R.id.store_view);
-
-        Intent intent = getIntent();
-        userid = intent.getIntExtra("USER_ID_STORE", 0);
-
-        GameAdapter gameadp =new GameAdapter(this);
-        gameadp.setGames(games);
-        gameadp.setUserid(userid);
-
-        gamesview.setAdapter(gameadp);
-        gamesview.setLayoutManager(new LinearLayoutManager(this));
     }
 }

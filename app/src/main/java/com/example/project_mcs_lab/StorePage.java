@@ -109,6 +109,7 @@ public class StorePage extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Log.e("apiData", "Error calling api");
+                    Log.e("apiData", error.toString());
                 }
             });
 

@@ -87,7 +87,6 @@ public class ProductDetailPage extends AppCompatActivity {
             cek++;
             accountDB.minusNominal(account, userid, game.getGameprice());
         }
-        cek=1;
         if(cek == 1){
             String transactiondate = new SimpleDateFormat("dd/MMM/yyyy", Locale.getDefault()).format(new Date());
             Transaction transaction = new Transaction();

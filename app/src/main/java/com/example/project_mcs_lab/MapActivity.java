@@ -51,7 +51,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     public void backToProductDetail(View view) {
-        Toast.makeText(this, "MSK", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ProductDetailPage.class);
         intent.putExtra("idproduct", productId);
         intent.putExtra("iduser", userId);

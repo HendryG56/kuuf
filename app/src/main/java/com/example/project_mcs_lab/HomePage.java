@@ -143,7 +143,6 @@ public class HomePage extends AppCompatActivity {
                 Toast.makeText(this,"Home Page", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.StoreButton:
-                Toast.makeText(this,"Store Page", Toast.LENGTH_SHORT).show();
                 Intent storeintent = new Intent(this, StorePage.class);
                 storeintent.putExtra("USER_ID_STORE", user_id);
                 startActivity(storeintent);
@@ -155,7 +154,6 @@ public class HomePage extends AppCompatActivity {
                 startActivity(profileintent);
                 return true;
             case R.id.LogOutButton:
-                Toast.makeText(this,"Logged Out", Toast.LENGTH_SHORT).show();
                 Intent logoutintent = new Intent(this, MainActivity.class);
                 startActivity(logoutintent);
                 finish();

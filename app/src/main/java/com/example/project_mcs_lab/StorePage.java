@@ -98,6 +98,11 @@ public class StorePage extends AppCompatActivity {
                             game.setLongitude(item.getDouble("longitude"));
 
                             gameDB.insertgame(game);
+                        }
+
+                        int count2 = gameDB.countTableSize();
+                        for(int i = 1; i <= count2; i++){
+                            Game game = gameDB.getGame(i);
                             games.add(game);
                             gameadp.notifyDataSetChanged();
                         }

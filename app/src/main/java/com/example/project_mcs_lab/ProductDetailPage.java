@@ -99,13 +99,6 @@ public class ProductDetailPage extends AppCompatActivity {
             Account account = accountDB.getAccount(userid);
             Game game = gameDB.getGame(productid);
 
-
-            smsManager = SmsManager.getDefault();
-            smsPermission = ContextCompat.checkSelfPermission(ProductDetailPage.this, Manifest.permission.SEND_SMS);
-
-            if(smsPermission != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(ProductDetailPage.this, new String[]{Manifest.permission.SEND_SMS}, 1);
-            }
             //SEND SMS
             String message = "Pembelian " + game.getGamename() + " seharga " + game.getGameprice() + " Berhasil!";
             smsManager.sendTextMessage(account.getPhonenumber(), null, message, null, null);

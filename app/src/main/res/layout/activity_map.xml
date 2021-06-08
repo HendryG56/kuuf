@@ -10,5 +10,14 @@
         android:id="@+id/google_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:text="Back"
+        android:background="@drawable/button_secondary"
+        android:onClick="backToProductDetail"/>
 </RelativeLayout>

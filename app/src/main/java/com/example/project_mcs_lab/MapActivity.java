@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,6 +19,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap map;
     Double longitude = 0.0, latitude = 0.0;
     String name = "";
+    Integer userId = 0 , productId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_map);
 
         Bundle bundle = getIntent().getExtras();
+        userId = bundle.getInt("USER_ID");
+        productId = bundle.getInt("PRODUCT_ID");
         longitude = bundle.getDouble("LONGITUDE");
         latitude = bundle.getDouble("LATITUDE");
         name = bundle.getString("NAME");
@@ -43,5 +48,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .draggable(true);
         map.addMarker(markerOptions).showInfoWindow();
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));
+    }
+
+    public void backToProductDetail(View view) {
+        Toast.makeText(this, "MSK", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ProductDetailPage.class);
+        intent.putExtra("idproduct", productId);
+        intent.putExtra("iduser", userId);
+        startActivity(intent);
+        finish();
     }
 }

@@ -108,10 +108,13 @@ public class ProductDetailPage extends AppCompatActivity {
     public void showLocation(View view) {
         Intent intent = new Intent(this, MapActivity.class);
         Bundle bundle = new Bundle();
+        bundle.putInt("USER_ID", userid);
+        bundle.putInt("PRODUCT_ID", productid);
         bundle.putString("NAME", game.getGamename());
         bundle.putDouble("LONGITUDE", game.getLongitude());
         bundle.putDouble("LATITUDE", game.getLatitude());
         intent.putExtras(bundle);
         startActivity(intent);
+        finish();
     }
 }

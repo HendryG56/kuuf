@@ -114,7 +114,6 @@ public class StorePage extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Log.e("apiData", "Error calling api");
-                    Log.e("apiData", error.toString());
                 }
             });
 
@@ -127,6 +126,12 @@ public class StorePage extends AppCompatActivity {
                 games.add(game);
                 gameadp.notifyDataSetChanged();
             }
+        }
+        count = gameDB.countTableSize();
+        for(int i = 1; i <= count; i++){
+            Game game = gameDB.getGame(i);
+            games.add(game);
+            gameadp.notifyDataSetChanged();
         }
     }
 }

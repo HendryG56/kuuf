@@ -98,12 +98,24 @@ public class RegisterPage extends AppCompatActivity {
         else{
             count++;
         }
+        boolean isAlpha = false;
+        boolean isNum = false;
         for(int a = 0; a < Password.length(); a++) {
-            if (!(Password.charAt(a) >= 'A' && Password.charAt(a) <= 'Z') && !(Password.charAt(a) >= 'a' && Password.charAt(a) <= 'z') && !(Password.charAt(a) >= '0' && Password.charAt(a) <= '9')){
+            if(isAlpha && isNum){
+                break;
+            }
+
+            if(Character.isDigit(Password.charAt(a))){
+                isNum = true;
+            }
+            if(Character.isLetter(Password.charAt(a))){
+                isAlpha = true;
+            }
+            if (!Character.isLetterOrDigit(Password.charAt(a))){
                 cek = 1;
             }
         }
-        if(cek == 1){
+        if(cek == 1 || !isAlpha || !isNum){
             Toast.makeText(this, "Password must contains only alphanumeric!", Toast.LENGTH_SHORT).show();
         }
         else{
